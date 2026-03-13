@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { useRouterCategories, RouteCategory } from '@/utils/page';
 
+const config = useRuntimeConfig();
 const { routeCategories } = useRouterCategories();
+const storymapLink = {
+  label: 'Storymap',
+  click: () => {
+    window.open(config.public.storymapUrl);
+  },
+};
 
 function getCategoryNavLinks(category: RouteCategory) {
-  return category.routes.map((x) => {
+  const links = category.routes.map((x) => {
     let linkObj = <any>{
       label: getRouteName(x),
     };
@@ -15,6 +22,10 @@ function getCategoryNavLinks(category: RouteCategory) {
     } else linkObj.to = x.path;
     return linkObj;
   });
+
+  if (category.name == 'General') links.unshift(storymapLink);
+
+  return links;
 }
 
 const alanLink = ref<HTMLElement>();
@@ -30,7 +41,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col gap-8 overflow-auto">
     <h1 class="text-2xl font-bold">Flowing Together</h1>
-    <div v-for="category in routeCategories">
+    <div v-for="category in routeCategories" :key="category.name">
       <h2 class="font-bold pb-2">{{ category.name }}</h2>
       <UVerticalNavigation
         :links="getCategoryNavLinks(category)"

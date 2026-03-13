@@ -54,11 +54,8 @@ definePageMeta({
         <li>
           <a href="https://skfb.ly/6VSyo">"Low Poly Bicycle"</a>
           by tolotedesign is licensed under
-          <a
-            href="
-          http://creativecommons.org/licenses/by/4.0/.
-          "
-            >Creative Commons Attribution.
+          <a href="https://creativecommons.org/licenses/by/4.0/">
+            Creative Commons Attribution.
           </a>
         </li>
         <li>
@@ -72,42 +69,42 @@ definePageMeta({
         <li>
           <a href="https://skfb.ly/oqDTy"> "Debris concrete junk" </a> by
           matousekfoto is licensed under
-          <a href="http://creativecommons.org/licenses/by/4.0/">
+          <a href="https://creativecommons.org/licenses/by/4.0/">
             Creative Commons Attribution.
           </a>
         </li>
         <li>
           <a href="https://skfb.ly/6prBt"> "Stop Sign Free" </a>
           by MathewMantas is licensed under
-          <a href="http://creativecommons.org/licenses/by/4.0/">
+          <a href="https://creativecommons.org/licenses/by/4.0/">
             Creative Commons Attribution.
           </a>
         </li>
         <li>
           <a href="https://skfb.ly/6sSUr"> "Low poly tree" </a>
           by Anthony Van Dosselaer is licensed under
-          <a href="http://creativecommons.org/licenses/by-nc/4.0/">
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/">
             Creative Commons Attribution-NonCommercial.
           </a>
         </li>
         <li>
           <a href="https://skfb.ly/KLAv"> "Lowpoly Tree" </a>
           by dionne is licensed under
-          <a href="http://creativecommons.org/licenses/by/4.0/">
+          <a href="https://creativecommons.org/licenses/by/4.0/">
             Creative Commons Attribution.
           </a>
         </li>
         <li>
           <a href="https://skfb.ly/6YTBS"> "Low poly tree" </a>
           by Chenuka Wijesundara is licensed under
-          <a href="http://creativecommons.org/licenses/by/4.0/">
+          <a href="https://creativecommons.org/licenses/by/4.0/">
             Creative Commons Attribution.
           </a>
         </li>
         <li>
           <a href="https://skfb.ly/oE99R"> "Game ready bush" </a>
           by H U N T E R 7 is licensed under
-          <a href="http://creativecommons.org/licenses/by/4.0/">
+          <a href="https://creativecommons.org/licenses/by/4.0/">
             Creative Commons Attribution.
           </a>
         </li>
