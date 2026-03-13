@@ -16,6 +16,22 @@ Branch previews can be published from non-`main` branches by the preview workflo
 
 The preview workflow is intended for forks and branch testing. Production on `main` remains rooted at `https://flowingtogether.lambertvillenj.org/`.
 
+### Repo Preview
+
+For this fork, GitHub Pages previews are published from the `gh-pages` branch at `/(root)` with no custom domain.
+
+Example preview URL:
+
+`https://rianders.github.io/lambertvillexr/previews/preview-test/`
+
+To create a preview:
+
+1. Push a non-`main` branch to the fork.
+2. Wait for the `Deploy branch preview to Pages` workflow to finish.
+3. Open `https://<owner>.github.io/lambertvillexr/previews/<branch-name>/`
+
+The production workflow preserves the `previews/` directory on `gh-pages`, so branch previews can coexist with the custom-domain production deploy.
+
 ## Developing
 
 ### Prerequisites
