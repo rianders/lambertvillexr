@@ -7,8 +7,10 @@ on:
 
 env:
   HIDE_DEMOS: true
-  # Production is served from the custom domain root via GitHub Pages.
-  NUXT_APP_BASE_URL: '/'
+  # Upstream production is served from the custom domain root via GitHub Pages.
+  # Forks published under <owner>.github.io/<repo>/ need a repo subpath base URL.
+  NUXT_APP_BASE_URL: ${{ github.repository_owner == 'lambertvillenj' && '/' || format('/{0}/', github.event.repository.name) }}
+  META_URL: ${{ github.repository_owner == 'lambertvillenj' && 'https://flowingtogether.lambertvillenj.org/' || format('https://{0}.github.io/{1}/', github.repository_owner, github.event.repository.name) }}
 
 jobs:
   build:

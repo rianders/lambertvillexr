@@ -10,6 +10,11 @@ The static build is deployed to GitHub Pages, and GitHub Pages maps that content
 
 If you need to preview a fork or a repo-scoped GitHub Pages deployment, use a repo subpath base URL for that build only. Do not change the production workflow away from `/` unless the production hosting model changes.
 
+The `main` Pages workflow now chooses this automatically:
+
+- `lambertvillenj/lambertvillexr` builds with `NUXT_APP_BASE_URL=/`
+- forks such as `rianders/lambertvillexr` build with `NUXT_APP_BASE_URL=/lambertvillexr/`
+
 For this fork, the published staging URL is:
 
 `https://rianders.github.io/lambertvillexr/`
