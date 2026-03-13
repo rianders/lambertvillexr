@@ -5,6 +5,7 @@
     "dev": "nuxt dev --port 4225",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "preview:static": "python3 -m http.server 4225 --bind 0.0.0.0 --directory .output/public",
     "postinstall": "nuxt prepare",
     "ngrok": "ngrok http 4225"
   },

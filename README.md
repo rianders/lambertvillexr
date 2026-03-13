@@ -54,13 +54,31 @@ Workflow:
   npm ci
   ```
 
-### Hosting a local server
+### Hosting a local development server
 
 Run
 
 ```bash
 npm run dev
 ```
+
+Use this for quick code iteration. For XR and deployment testing, prefer the static preview flow below.
+
+### Hosting the local static build
+
+Run
+
+```bash
+npm run generate
+npm run preview:static
+```
+
+This serves the generated site from `.output/public` at:
+
+- `http://localhost:4225` on the same machine
+- `http://<your-computer-ip>:4225` from another device on the same network
+
+This is the closest local match to the GitHub Pages deployment.
 
 ### Hosting a local server live
 
@@ -73,7 +91,8 @@ Make sure you have [ngrok](https://ngrok.com/product) installed and have registe
 Run
 
 ```bash
-npm run dev
+npm run generate
+npm run preview:static
 ```
 
 In a separate terminal, run
@@ -92,7 +111,7 @@ npm run ngrok
 Run
 
 ```bash
-npm run build
+npm run generate
 ```
 
 The static website should be built inside of the `.output/public` folder.
