@@ -22,10 +22,16 @@ The preview workflow is intended for forks and branch testing. Production on `ma
 
 - Make sure you have Node.js 20 installed.
 - Clone this repository
-- Run
+- If you use `nvm`, run
 
   ```bash
-  npm i
+  nvm use
+  ```
+
+- Install dependencies with
+
+  ```bash
+  npm ci
   ```
 
 ### Hosting a local server
