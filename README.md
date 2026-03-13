@@ -20,6 +20,10 @@ The preview workflow is intended for forks and branch testing. Production on `ma
 
 For this fork, GitHub Pages previews are published from the `gh-pages` branch at `/(root)` with no custom domain.
 
+Fork repository:
+
+[https://github.com/rianders/lambertvillexr](https://github.com/rianders/lambertvillexr)
+
 Example preview URL:
 
 `https://rianders.github.io/lambertvillexr/previews/preview-test/`
