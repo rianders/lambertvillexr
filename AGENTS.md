@@ -5,14 +5,14 @@
 - Preserve the production site at `https://flowingtogether.lambertvillenj.org/`.
 - Treat this project as a static site first. Builds should continue to work from `.output/public`.
 - Prefer low-risk, incremental changes over broad rewrites.
-- Keep fork previews easy to use without breaking the production custom-domain deployment.
+- Keep the fork workflow simple and aligned with published `main` testing.
 - Favor practical XR usability over cleverness. If an interaction is hard to use on-device, simplify it.
 
 ## Hosting Rules
 
 - Production is deployed through GitHub Pages and mapped to the custom domain `flowingtogether.lambertvillenj.org`.
 - Production builds must keep `NUXT_APP_BASE_URL=/`.
-- Fork or branch previews may use repo-subpath URLs under `https://<owner>.github.io/lambertvillexr/previews/<branch-name>/`.
+- The fork's published staging URL is `https://rianders.github.io/lambertvillexr/`.
 - Do not change the production hosting model unless there is an explicit decision to move away from the custom domain root.
 
 ## Development Rules
@@ -41,14 +41,13 @@
 - First verify `/tutorial` for onboarding and skip behavior.
 - Then verify at least one real site page under `/sites/`.
 - For GitHub Pages changes, confirm both the `main` workflow run and the Pages publish step.
-- For Quest-specific fixes, distinguish between production, preview branches, and stale cached builds before concluding that a change failed.
+- For Quest-specific fixes, distinguish between production, fork `main`, and stale cached builds before concluding that a change failed.
 
 ## Working Workflow
 
 - Start with local validation using `npm run generate`.
 - Treat fork `main` as the published staging branch for headset testing.
 - Use the published fork `main` URL as the primary on-device test target.
-- Use preview branches only when there is a specific reason to test a separate published URL.
 - Only open an upstream pull request after the change has been validated on the fork.
 
 ## Release Flow

@@ -10,35 +10,31 @@ The static build is deployed to GitHub Pages, and GitHub Pages maps that content
 
 If you need to preview a fork or a repo-scoped GitHub Pages deployment, use a repo subpath base URL for that build only. Do not change the production workflow away from `/` unless the production hosting model changes.
 
-Branch previews can be published from non-`main` branches by the preview workflow. Those previews are built for GitHub project Pages and deployed under:
+For this fork, the published staging URL is:
 
-`https://<owner>.github.io/lambertvillexr/previews/<branch-name>/`
+`https://rianders.github.io/lambertvillexr/`
 
-The preview workflow is intended for forks and branch testing. Production on `main` remains rooted at `https://flowingtogether.lambertvillenj.org/`.
+Use that published fork URL for headset testing before opening an upstream pull request. Production on upstream remains rooted at `https://flowingtogether.lambertvillenj.org/`.
 
-### Repo Preview
+### Fork Staging
 
-For this fork, GitHub Pages previews are published from the `gh-pages` branch at `/(root)` with no custom domain.
+For this fork, GitHub Pages is published from the `gh-pages` branch at `/(root)` with no custom domain.
 
 Fork repository:
 
 [https://github.com/rianders/lambertvillexr](https://github.com/rianders/lambertvillexr)
 
-Live preview:
+Published staging site:
 
-[https://rianders.github.io/lambertvillexr/previews/preview-test/](https://rianders.github.io/lambertvillexr/previews/preview-test/)
+[https://rianders.github.io/lambertvillexr/](https://rianders.github.io/lambertvillexr/)
 
-Example preview URL:
+Workflow:
 
-`https://rianders.github.io/lambertvillexr/previews/preview-test/`
-
-To create a preview:
-
-1. Push a non-`main` branch to the fork.
-2. Wait for the `Deploy branch preview to Pages` workflow to finish.
-3. Open `https://<owner>.github.io/lambertvillexr/previews/<branch-name>/`
-
-The production workflow preserves the `previews/` directory on `gh-pages`, so branch previews can coexist with the custom-domain production deploy.
+1. Make the change locally.
+2. Run `npm run generate`.
+3. Push to `main`.
+4. Wait for the `Deploy Nuxt site to Pages` workflow to finish.
+5. Test `https://rianders.github.io/lambertvillexr/` on the headset.
 
 ## Developing
 

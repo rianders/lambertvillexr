@@ -9,8 +9,6 @@ env:
   HIDE_DEMOS: true
   # Production is served from the custom domain root via GitHub Pages.
   NUXT_APP_BASE_URL: '/'
-  # For repo-scoped preview builds only:
-  # NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
 
 jobs:
   build:
@@ -33,6 +31,4 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: .output/public # The folder the action should deploy.
-          clean-exclude: |
-            previews
           token: ${{ secrets.GITHUB_TOKEN }}
