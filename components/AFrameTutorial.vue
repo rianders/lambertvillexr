@@ -193,19 +193,23 @@ const currSegmentIndex = ref(0);
 const currSegment = computed(() => segments[currSegmentIndex.value]);
 const currSubSegmentIndex = ref(0);
 const sceneEntered = ref(false);
+const tutorialSkipped = ref(false);
 
 async function runTutorial() {
   currSegmentIndex.value = 0;
   while (currSegmentIndex.value < segments.length) {
     currSubSegmentIndex.value = 0;
     while (currSubSegmentIndex.value < currSegment.value.subSegments.length) {
+      if (tutorialSkipped.value) return;
       const currSubSegment =
         currSegment.value.subSegments[currSubSegmentIndex.value];
       await new Promise((resolve) => {
         currSubSegment.init(() => resolve(undefined));
       });
+      if (tutorialSkipped.value) return;
       currSubSegmentIndex.value++;
     }
+    if (tutorialSkipped.value) return;
     currSegmentIndex.value++;
   }
   localStorage.setItem('tutorialFinished', 'true');
@@ -215,6 +219,12 @@ async function runTutorial() {
 function onSceneEntered() {
   sceneEntered.value = true;
   runTutorial();
+}
+
+function finishTutorial() {
+  tutorialSkipped.value = true;
+  localStorage.setItem('tutorialFinished', 'true');
+  emit('finished');
 }
 
 function getSegmentDescription(segment?: TutorialSegment) {
@@ -352,12 +362,22 @@ function getSegmentDescription(segment?: TutorialSegment) {
       class="absolute h-full w-full opacity-0 transition-all duration-200 bg-transparent pointer-events-none"
       :class="{ 'opacity-100': sceneEntered }"
     >
-      <div class="relative w-full xs:max-w-xs text-white">
+      <div class="relative w-full xs:max-w-xs text-white pointer-events-auto">
         <div
           class="absolute h-full w-full bg-black opacity-75 xs:rounded-br-lg"
         ></div>
         <div class="relative p-4">
-          <div class="font-bold">{{ currSegment?.name }}</div>
+          <div class="flex items-start justify-between gap-4">
+            <div class="font-bold">{{ currSegment?.name }}</div>
+            <UButton
+              color="gray"
+              size="xs"
+              icon="i-heroicons-forward"
+              @click="finishTutorial"
+            >
+              Skip
+            </UButton>
+          </div>
           <div class="font-regular mt-2">
             {{ getSegmentDescription(currSegment) }}
           </div>

@@ -212,6 +212,18 @@ function toggleMusic() {
         vr-mode-ui="enabled: false"
       >
         <slot></slot>
+        <a-entity
+          laser-controls="hand: left"
+          raycaster="objects: .clickable"
+          cursor="rayOrigin: entity; fuse: false"
+          line="color: white; opacity: 0.75"
+        ></a-entity>
+        <a-entity
+          laser-controls="hand: right"
+          raycaster="objects: .clickable"
+          cursor="rayOrigin: entity; fuse: false"
+          line="color: white; opacity: 0.75"
+        ></a-entity>
       </a-scene>
       <!-- AR Button -->
       <div
