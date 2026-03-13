@@ -24,6 +24,10 @@ Fork repository:
 
 [https://github.com/rianders/lambertvillexr](https://github.com/rianders/lambertvillexr)
 
+Live preview:
+
+[https://rianders.github.io/lambertvillexr/previews/preview-test/](https://rianders.github.io/lambertvillexr/previews/preview-test/)
+
 Example preview URL:
 
 `https://rianders.github.io/lambertvillexr/previews/preview-test/`
