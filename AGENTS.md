@@ -46,9 +46,9 @@
 ## Working Workflow
 
 - Start with local validation using `npm run generate`.
-- When the issue needs headset testing, prefer a published fork preview before changing `main`.
-- Keep a stable preview branch available when it helps Quest testing. That branch may be reset to match `main` when needed.
-- Treat fork `main` as the production-shaped verification step, not the first test step.
+- Treat fork `main` as the published staging branch for headset testing.
+- Use the published fork `main` URL as the primary on-device test target.
+- Use preview branches only when there is a specific reason to test a separate published URL.
 - Only open an upstream pull request after the change has been validated on the fork.
 
 ## Release Flow
@@ -56,8 +56,8 @@
 1. Make the change on a branch.
 2. Run `npm run generate`.
 3. Test locally if the issue can be reproduced without the published site.
-4. Push the branch and test the GitHub Pages preview on device.
-5. Merge or promote the change to fork `main` once the preview is acceptable.
+4. Merge or promote the change to fork `main`.
+5. Test the published fork `main` site on device.
 6. Confirm the `main` workflow run and Pages publish succeeded.
 7. Re-test the published site on device if the change is XR-sensitive.
 8. Open the upstream pull request when the fork is in a known-good state.
