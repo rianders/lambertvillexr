@@ -61,14 +61,15 @@ Acceptance criteria:
 Priority: P1
 
 Suggested issue title:
-- `deploy: make Nuxt base URL consistent with GitHub Pages hosting`
+- `deploy: document custom-domain root hosting and optional preview base URL mode`
 
 Scope:
-- Decide whether deployment is root-domain based or repo-path based.
-- Update workflow and app config to match that decision.
+- Document that production is served from `flowingtogether.lambertvillenj.org` at the domain root.
+- Keep production `NUXT_APP_BASE_URL=/`.
+- Document repo-subpath builds as an optional preview mode for forks.
 
 Acceptance criteria:
-- Generated asset URLs work on the chosen Pages host.
+- Generated asset URLs work on the production custom domain.
 - Hosting assumptions are documented in README.
 
 ### 5. Add a pinned Node version file

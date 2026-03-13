@@ -53,13 +53,14 @@ Definition of done:
 
 Reason:
 - CI still uses Node 16 and `npm install`.
-- Deployment base path is hardcoded to `/`, which is fragile for GitHub Pages forks and repo-name-based hosting.
+- The workflow needs to preserve the custom-domain root deployment model explicitly, rather than leaving that assumption undocumented.
 
 Actions:
 - Move to current GitHub Actions versions.
 - Move CI to Node 20 LTS.
 - Use `npm ci` in CI.
-- Make `NUXT_APP_BASE_URL` repo-aware or document that deployment requires a custom domain root.
+- Document that production requires `NUXT_APP_BASE_URL=/` because GitHub Pages is mapped to the custom domain root.
+- Document repo-subpath builds as an optional preview mode instead of changing production defaults.
 
 Definition of done:
 - CI uses current maintained actions and Node 20.
@@ -115,7 +116,7 @@ Reason:
 - README, env defaults, and runtime metadata reference different canonical hosts.
 
 Actions:
-- Pick the canonical deployment URL.
+- Keep the canonical deployment URL as `https://flowingtogether.lambertvillenj.org/`.
 - Update README, `env-defaults.sh`, and `nuxt.config.ts` defaults to match.
 
 Definition of done:

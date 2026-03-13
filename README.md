@@ -1,12 +1,20 @@
 # Lambertville XR
 
-Website for Lambertville XR walking tour. The website is hosted on [https://rutgersgrid.github.io/lambertvillexr](https://rutgersgrid.github.io/lambertvillexr).
+Website for the Lambertville XR walking tour.
+
+## Hosting
+
+Production is served from the custom domain [https://flowingtogether.lambertvillenj.org](https://flowingtogether.lambertvillenj.org).
+
+The static build is deployed to GitHub Pages, and GitHub Pages maps that content to the custom domain. Because production is served from the domain root, the deployment workflow intentionally uses `NUXT_APP_BASE_URL=/`.
+
+If you need to preview a fork or a repo-scoped GitHub Pages deployment, use a repo subpath base URL for that build only. Do not change the production workflow away from `/` unless the production hosting model changes.
 
 ## Developing
 
 ### Prerequisites
 
-- Make sure you have NodeJS installed.
+- Make sure you have Node.js 20 installed.
 - Clone this repository
 - Run
 
@@ -67,6 +75,9 @@ The settings for building the website can be configured by environment variables
   - If set, then all social media previews will link to this URL. This should be set for production builds.
 - `STORYMAP_URL`
   - If set, then the story map url on the site will link to this URL. This should be set for production builds.
+- `NUXT_APP_BASE_URL`
+  - Production should remain `/` because the live site is served from the custom domain root.
+  - For fork previews or repo-scoped GitHub Pages builds, this can be set to `/<repo-name>/`.
 
 #### Site URLs
 
@@ -75,19 +86,19 @@ Navigating to a site with `?ar=true` after its url will automatically enter AR m
 ```
 Ex.
 
-https://rutgersgrid.github.io/lambertvillexr/sites/site-1/?ar=true
-https://rutgersgrid.github.io/lambertvillexr/sites/site-2/?ar=true
-https://rutgersgrid.github.io/lambertvillexr/sites/site-3/?ar=true
+https://flowingtogether.lambertvillenj.org/sites/site-1/?ar=true
+https://flowingtogether.lambertvillenj.org/sites/site-2/?ar=true
+https://flowingtogether.lambertvillenj.org/sites/site-3/?ar=true
 ...
 ```
 
 ### Credits
 
-- "Low Poly Bicycle" (https://skfb.ly/6VSyo) by tolotedesign is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "Low Poly Bicycle" (https://skfb.ly/6VSyo) by tolotedesign is licensed under Creative Commons Attribution (https://creativecommons.org/licenses/by/4.0/).
 - "Chevrolet Camaro SS Coupe" (https://free3d.com/3d-model/chevrolet-camaro-ss-coupe-373476.html) by thmacr
 - "Debris Concrete Junk" (https://sketchfab.com/3d-models/debris-concrete-junk-3f161258ebde4bd8afc98e57c9e06890) by matousekfoto
-- "Stop Sign Free" (https://skfb.ly/6prBt) by MathewMantas is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-- "Low poly tree" (https://skfb.ly/6sSUr) by Anthony Van Dosselaer is licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
-- "Lowpoly Tree" (https://skfb.ly/KLAv) by dionne is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-- "Low poly tree" (https://skfb.ly/6YTBS) by Chenuka Wijesundara is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-- "Game ready bush" (https://skfb.ly/oE99R) by H U N T E R 7 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+- "Stop Sign Free" (https://skfb.ly/6prBt) by MathewMantas is licensed under Creative Commons Attribution (https://creativecommons.org/licenses/by/4.0/).
+- "Low poly tree" (https://skfb.ly/6sSUr) by Anthony Van Dosselaer is licensed under Creative Commons Attribution-NonCommercial (https://creativecommons.org/licenses/by-nc/4.0/).
+- "Lowpoly Tree" (https://skfb.ly/KLAv) by dionne is licensed under Creative Commons Attribution (https://creativecommons.org/licenses/by/4.0/).
+- "Low poly tree" (https://skfb.ly/6YTBS) by Chenuka Wijesundara is licensed under Creative Commons Attribution (https://creativecommons.org/licenses/by/4.0/).
+- "Game ready bush" (https://skfb.ly/oE99R) by H U N T E R 7 is licensed under Creative Commons Attribution (https://creativecommons.org/licenses/by/4.0/).
