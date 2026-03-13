@@ -207,11 +207,16 @@ function toggleMusic() {
         v-bind="attributes"
         embedded
         renderer="sortObjects: true;"
+        webxr="optionalFeatures: hand-tracking"
+        cursor__xrselect="rayOrigin: xrselect; fuse: false"
+        raycaster="objects: .clickable"
         class="absolute w-full h-full"
         loading-screen="enabled: false"
         vr-mode-ui="enabled: false"
       >
         <slot></slot>
+        <a-entity hand-tracking-controls="hand: left"></a-entity>
+        <a-entity hand-tracking-controls="hand: right"></a-entity>
         <a-entity
           laser-controls="hand: left"
           raycaster="objects: .clickable"
