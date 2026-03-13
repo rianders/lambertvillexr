@@ -7,8 +7,9 @@ const props = defineProps<{
   startTitle?: string;
   startDescription?: string;
   alwaysShowOverlay?: boolean;
+  secondaryButtonText?: string;
 }>();
-const emit = defineEmits(['sceneEntered']);
+const emit = defineEmits(['sceneEntered', 'secondaryAction']);
 
 const startButtonText = ref(props.startButtonText ?? 'Start Experience');
 
@@ -69,6 +70,14 @@ if (!props.alwaysShowOverlay && !needsPermissions()) {
       <UButton icon="i-heroicons-play" size="xl" @click="tryStartExperience">{{
         startButtonText
       }}</UButton>
+      <UButton
+        v-if="secondaryButtonText"
+        color="gray"
+        size="xl"
+        @click="emit('secondaryAction')"
+      >
+        {{ secondaryButtonText }}
+      </UButton>
     </div>
   </div>
 </template>

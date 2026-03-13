@@ -242,11 +242,13 @@ function getSegmentDescription(segment?: TutorialSegment) {
       :load-systems="loadSystems"
       :hide-tutorial="true"
       start-button-text="Start Tutorial"
+      secondary-button-text="Skip Tutorial"
       start-title="Welcome"
       start-description="This is a tutorial on how to interact with an AR experience. These experiences are audio and visual so make sure to have your volume on!"
       :always-show-overlay="true"
       :disable-ar-mode="true"
       @scene-entered="onSceneEntered"
+      @secondary-action="finishTutorial"
     >
       <a-assets>
         <video
@@ -354,6 +356,13 @@ function getSegmentDescription(segment?: TutorialSegment) {
         look-controls="pointerLockEnabled: true"
         wasd-controls="enabled:false"
       >
+        <a-button
+          width="1.4"
+          height="0.35"
+          position="0.9 0.65 -1.5"
+          button="text: Skip Tutorial; textColor: black"
+          @click="finishTutorial"
+        ></a-button>
         <a-animated-cursor></a-animated-cursor>
       </a-camera>
     </AFrameScene>

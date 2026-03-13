@@ -13,6 +13,7 @@ const props = withDefaults(
     loadSystems?: () => Promise<void>;
     attributes?: { [key: string]: any };
     startButtonText?: string;
+    secondaryButtonText?: string;
     startTitle?: string;
     startDescription?: string;
     hideTutorial?: boolean;
@@ -26,10 +27,11 @@ const props = withDefaults(
     disableArMode: false,
   }
 );
-const emit = defineEmits(['sceneEntered']);
+const emit = defineEmits(['sceneEntered', 'secondaryAction']);
 
 const showTutorial = ref(!props.hideTutorial);
 const webcamVideo = ref<HTMLVideoElement>();
+const vrMode = ref(false);
 
 const scene = ref<Scene>();
 let cameraHasLookControls = false;
@@ -101,6 +103,12 @@ watch(scene, (newScene, oldScene) => {
 
       sceneLoaded.value = true;
     });
+    newScene.addEventListener('enter-vr', () => {
+      vrMode.value = true;
+    });
+    newScene.addEventListener('exit-vr', () => {
+      vrMode.value = false;
+    });
   }
 });
 
@@ -159,9 +167,20 @@ function onTutorialFinished() {
   showTutorial.value = false;
 }
 
+function onSecondaryAction() {
+  emit('secondaryAction');
+}
+
 function toggleArMode() {
   arMode.value = !arMode.value;
   updateArMode();
+}
+
+function toggleVrMode() {
+  if (!scene.value) return;
+
+  if (vrMode.value) (scene.value as any).exitVR();
+  else (scene.value as any).enterVR();
 }
 
 function toggleMusic() {
@@ -230,10 +249,10 @@ function toggleMusic() {
           line="color: white; opacity: 0.75"
         ></a-entity>
       </a-scene>
-      <!-- AR Button -->
+      <!-- Scene Controls -->
       <div
         class="absolute bottom-4 right-4 lg:bottom-8 lg:right-8 flex flex-row gap-4"
-        v-if="!disableArMode"
+        v-if="sceneLoaded"
       >
         <UButton
           v-if="true"
@@ -248,6 +267,20 @@ function toggleMusic() {
         </UButton>
 
         <UButton
+          v-if="!arMode"
+          :icon="
+            vrMode
+              ? 'i-heroicons-arrow-left-on-rectangle'
+              : 'i-heroicons-viewfinder-circle'
+          "
+          size="xl"
+          @click="toggleVrMode()"
+        >
+          {{ vrMode ? 'Exit VR' : 'Enter VR' }}
+        </UButton>
+
+        <UButton
+          v-if="!disableArMode"
           :icon="
             arMode ? 'i-heroicons-arrow-left-on-rectangle' : 'i-heroicons-play'
           "
@@ -261,10 +294,12 @@ function toggleMusic() {
       <EnterASceneOverlay
         v-if="sceneLoaded"
         :start-button-text="startButtonText"
+        :secondary-button-text="secondaryButtonText"
         :start-title="startTitle"
         :start-description="startDescription"
         :always-show-overlay="alwaysShowOverlay"
         @scene-entered="onSceneEntered"
+        @secondary-action="onSecondaryAction"
       ></EnterASceneOverlay>
     </template>
     <AFrameTutorial
