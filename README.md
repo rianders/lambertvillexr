@@ -10,6 +10,12 @@ The static build is deployed to GitHub Pages, and GitHub Pages maps that content
 
 If you need to preview a fork or a repo-scoped GitHub Pages deployment, use a repo subpath base URL for that build only. Do not change the production workflow away from `/` unless the production hosting model changes.
 
+Branch previews can be published from non-`main` branches by the preview workflow. Those previews are built for GitHub project Pages and deployed under:
+
+`https://<owner>.github.io/lambertvillexr/previews/<branch-name>/`
+
+The preview workflow is intended for forks and branch testing. Production on `main` remains rooted at `https://flowingtogether.lambertvillenj.org/`.
+
 ## Developing
 
 ### Prerequisites

@@ -1,16 +1,22 @@
-name: Deploy Nuxt site to Pages
+name: Deploy branch preview to Pages
 
 on:
   push:
-    branches: ['main']
+    branches-ignore:
+      - main
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-preview-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   HIDE_DEMOS: true
-  # Production is served from the custom domain root via GitHub Pages.
-  NUXT_APP_BASE_URL: '/'
-  # For repo-scoped preview builds only:
-  # NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
+  NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/previews/${{ github.ref_name }}/
+  META_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/previews/${{ github.ref_name }}/
 
 jobs:
   build:
@@ -28,11 +34,11 @@ jobs:
         run: npm ci
       - name: Static HTML export with Nuxt
         run: npm run generate
-      - name: Deploy
+      - name: Deploy preview
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: .output/public # The folder the action should deploy.
-          clean-exclude: |
-            previews
+          branch: gh-pages
+          folder: .output/public
+          target-folder: previews/${{ github.ref_name }}
+          clean: false
           token: ${{ secrets.GITHUB_TOKEN }}
